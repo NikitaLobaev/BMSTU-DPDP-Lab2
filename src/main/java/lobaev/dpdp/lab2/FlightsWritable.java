@@ -1,2 +1,4 @@
-package lobaev.dpdp.lab2;public class FlightsWritable {
+package lobaev.dpdp.lab2;
+
+public class FlightsWritable {
 }
