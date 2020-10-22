@@ -1,2 +1,9 @@
-package lobaev.dpdp.lab2;public class Main {
+package lobaev.dpdp.lab2;
+
+public class Main {
+
+    public static void main(String[] args) {
+        
+    }
+
 }
