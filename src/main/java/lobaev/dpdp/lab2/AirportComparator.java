@@ -10,7 +10,9 @@ public class AirportComparator extends WritableComparator {
     }
 
     @Override
-    public int compare(WritableComparable a, WritableComparable b) {
-        return super.compare(a, b);
+    public int compare(WritableComparable writableComparable1, WritableComparable writableComparable2) {
+        AirportsWritable airportsWritable1 = (AirportsWritable) writableComparable1,
+        airportsWritable2 = (AirportsWritable) writableComparable2;
+        return airportsWritable1.getCode().compareTo(airportsWritable2.getCode());
     }
 }
