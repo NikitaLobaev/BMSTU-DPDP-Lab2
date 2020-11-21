@@ -1,4 +1,11 @@
 package lobaev.dpdp.lab2;
 
-public class AirportComparator {
+import org.apache.hadoop.io.WritableComparator;
+
+public class AirportComparator extends WritableComparator {
+
+    AirportComparator() {
+        super(AirportsWritable.class, true)
+    }
+
 }
