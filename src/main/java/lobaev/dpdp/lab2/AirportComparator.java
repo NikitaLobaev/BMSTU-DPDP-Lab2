@@ -15,4 +15,5 @@ public class AirportComparator extends WritableComparator {
         airportsWritable2 = (AirportsWritable) writableComparable2;
         return airportsWritable1.getCode().compareTo(airportsWritable2.getCode());
     }
+
 }
