@@ -7,6 +7,7 @@ public class AirportPartitioner extends Partitioner<AirportsWritable, Text> {
 
     @Override
     public int getPartition(AirportsWritable airportsWritable, Text text, int i) {
-        return 0;
+        return airportsWritable.getCode() % i;
     }
+
 }
