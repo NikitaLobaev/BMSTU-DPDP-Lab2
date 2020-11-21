@@ -13,7 +13,14 @@ public class FlightsMapper extends Mapper<LongWritable, Text, AirportsWritable, 
         if (key.get() == 0) {
             return;
         }
-        String[] flights = value.toString().split(",");
-        
+        String[] mapped = value.toString().split(",");
+        final String airport = mapped[14], delay = mapped[18]; //14 и 18 - позиции в строках, на которых находится d аэропорта и delay соответственно
+        if (delay.length() > 0) {
+            double flightDelay = Double.parseDouble(delay);
+            if (flightDelay > 0) {
+                context.write(new AirportsWritable(Integer.parseInt(airport), 1), new Text(delay));
+            }
+        }
     }
+
 }
