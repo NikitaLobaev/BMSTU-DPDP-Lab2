@@ -10,6 +10,10 @@ public class FlightsMapper extends Mapper<LongWritable, Text, AirportsWritable, 
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        super.map(key, value, context);
+        if (key.get() == 0) {
+            return;
+        }
+        String[] flights = value.toString().split(",");
+        
     }
 }

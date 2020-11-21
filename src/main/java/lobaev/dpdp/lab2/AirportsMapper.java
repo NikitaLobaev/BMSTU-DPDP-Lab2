@@ -10,10 +10,10 @@ public class AirportsMapper extends Mapper<LongWritable, Text, AirportsWritable,
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        //super.map(key, value, context);
-        if (key.get() != 0) {
-            String[] airports = value.toString().split(",");
-            context.write(new AirportsWritable(Integer.parseInt(airports[0]), 0), new Text(airports[1]));
+        if (key.get() == 0) {
+            return;
         }
+        String[] airports = value.toString().split(",");
+        context.write(new AirportsWritable(Integer.parseInt(airports[0]), 0), new Text(airports[1]));
     }
 }
