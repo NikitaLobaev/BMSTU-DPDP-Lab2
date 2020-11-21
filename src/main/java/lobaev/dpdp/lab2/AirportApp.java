@@ -19,7 +19,7 @@ public class AirportApp {
         job.setJarByClass(AirportApp.class);
         job.setJobName("AirportApp");
         //FileInputFormat.addInputPath(job, new Path(args[0]));
-        MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, null);
+        MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, AirportsMapper.class);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, null);
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setGroupingComparatorClass(AirportsComparator.class);
