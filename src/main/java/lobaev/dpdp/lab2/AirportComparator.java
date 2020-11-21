@@ -1,2 +1,4 @@
-package lobaev.dpdp.lab2;public class AirportComparator {
+package lobaev.dpdp.lab2;
+
+public class AirportComparator {
 }
