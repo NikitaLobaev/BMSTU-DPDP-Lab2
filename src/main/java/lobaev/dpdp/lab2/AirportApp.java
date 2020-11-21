@@ -1,17 +1,24 @@
 package lobaev.dpdp.lab2;
 
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
 public class AirportApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         if (args.length != 3) {
             System.err.println("Usage: AirportApp <input path> <output path>");
             System.exit(-1);
         }
         Job job = Job.getInstance();
-        job.setJarByClass(WordCountApp.class);
-        job.setJobName("Word count");
-        FileInputFormat.addInputPath(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        job.setJarByClass(AirportApp.class);
+        job.setJobName("AirportApp");
+        //FileInputFormat.addInputPath(job, new Path(args[0]));
+        //FileOutputFormat.setOutputPath(job, new Path(args[1]));
         job.setMapperClass(WordMapper.class);
         job.setReducerClass(WordReducer.class);
         job.setOutputKeyClass(Text.class);
