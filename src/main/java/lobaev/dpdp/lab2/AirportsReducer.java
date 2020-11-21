@@ -12,7 +12,8 @@ public class AirportsReducer extends Reducer<AirportsWritable, Text, Text, Text>
         //super.reduce(key, values, context);
         int c = 0;
         String name; //название аэропорта
-        double delaysSum = 0, delayAverage, delayMin = 
+        double delaysSum = 0, delayAverage, delayMin = Double.MIN_VALUE, delayMax = Double.MAX_VALUE;
+        
     }
 
 }
