@@ -8,17 +8,41 @@ import java.io.IOException;
 
 public class AirportsWritable implements WritableComparable<AirportsWritable> {
 
-    private int index, code;
+    private Integer index, code;
 
-    @Override
-    public void write(DataOutput var1) throws IOException {
-        var1.writeInt(code);
-        var1.writeInt(index);
+    AirportsWritable(Integer index, Integer code) {
+        this.index = index;
+        this.code = code;
     }
 
     @Override
-    public void readFields(DataInput var1) throws IOException {
+    public int hashCode() {
+        return this.code.hashCode();
+    }
 
+    @Override
+    public int compareTo(AirportsWritable airportsWritable) {
+        int c = this.code.compareTo(airportsWritable.code);
+        if (c != 0) {
+            return c;
+        }
+        return this.index.compareTo(airportsWritable.index);
+    }
+
+    @Override
+    public void write(DataOutput dataOutput) throws IOException {
+        dataOutput.writeInt(this.code);
+        dataOutput.writeInt(this.index);
+    }
+
+    @Override
+    public void readFields(DataInput dataInput) throws IOException {
+        this.index = dataInput.readInt();
+        this.code = dataInput.readInt();
+    }
+
+    public Integer getCode() {
+        return this.code;
     }
 
 }
