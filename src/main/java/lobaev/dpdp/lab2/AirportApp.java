@@ -4,7 +4,6 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -23,8 +22,8 @@ public class AirportApp {
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, null);
         MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, null);
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
-        job.setGroupingComparatorClass(AirportComparator.class);
-        job.setPartitionerClass(AirportPartitioner.class);
+        job.setGroupingComparatorClass(AirportsComparator.class);
+        job.setPartitionerClass(AirportsPartitioner.class);
         job.setReducerClass(null);
         //job.setMapperClass(WordMapper.class);
         //job.setReducerClass(WordReducer.class);
