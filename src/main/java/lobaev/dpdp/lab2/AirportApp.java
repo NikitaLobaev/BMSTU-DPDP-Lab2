@@ -12,7 +12,7 @@ public class AirportApp {
 
     public static void main(String[] args) throws Throwable {
         if (args.length != 3) {
-            System.err.println("Usage: AirportApp <input path 1> <input path 2> <output path>");
+            System.err.println("Usage: AirportApp <input airports path> <input flights path> <output path>");
             System.exit(-1);
         }
         Job job = Job.getInstance();
@@ -20,7 +20,7 @@ public class AirportApp {
         job.setJobName("AirportApp");
         //FileInputFormat.addInputPath(job, new Path(args[0]));
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, AirportsMapper.class);
-        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, null);
+        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, FlightsMapper.class);
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setGroupingComparatorClass(AirportsComparator.class);
         job.setPartitionerClass(AirportsPartitioner.class);
