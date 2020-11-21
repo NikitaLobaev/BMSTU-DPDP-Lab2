@@ -1,2 +1,4 @@
-package lobaev.dpdp.lab2;public class FlightsMapper {
+package lobaev.dpdp.lab2;
+
+public class FlightsMapper {
 }
